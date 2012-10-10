@@ -26,7 +26,7 @@ function soundcloud() {
     /path/to/soundcloud-downloader.py ${user} CLIENT_ID
 }
 ```
-And to download tracks from Bassnectar's:
+And to download the all tracks at one time from Bassnectar user:
 ```shell
 $ soundcloud bassnectar
 ```
