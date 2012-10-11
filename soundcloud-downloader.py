@@ -17,7 +17,7 @@ def get_title(track):
 	# retrieve the title of the song
 	title = "%s.mp3" % get_tag(track, 'title')
 
-	return title
+	return title.replace('/', '-')
 
 def get_url(track):
 	# regular expression for the string we will search for in waveform-url tag
