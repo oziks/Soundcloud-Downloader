@@ -23,12 +23,19 @@ Edit your `.bashrc` file and paste the following code :
 ```shell
 function soundcloud() {
     user=$1
-    /path/to/soundcloud-downloader.py ${user} CLIENT_ID
+    type=$2
+    /path/to/soundcloud-downloader.py ${user} ${type} CLIENT_ID
 }
 ```
 And to download the all tracks at one time from Bassnectar user:
 ```shell
 $ soundcloud bassnectar
+# same action with the `type` argument
+$ soundcloud bassnectar tracks 
+```
+And my favorites:
+```shell
+$ soundcloud oziks favorites
 ```
 ___
 
