@@ -41,11 +41,17 @@ def main():
 	# retrieve the user of the songs to download
 	user = sys.argv[1]
 
+	# retrieve type to download (tracks or favorites)
+	type = sys.argv[2]
+
+	if type != "tracks" and type != "favorites":
+		type = "tracks"
+
 	# retrieve the client_id from the final command-line argument
 	client_id = sys.argv[-1]
 
 	# retrieve the URL of the song to download from the final command-line argument
-	soundcloud_api = "https://api.soundcloud.com/users/%s/tracks?client_id=%s&limit=9999" % (user, client_id)
+	soundcloud_api = "https://api.soundcloud.com/users/%s/%s?client_id=%s&limit=9999" % (user, type, client_id)
 
 	try:
 		# open api URL for reading
@@ -60,9 +66,12 @@ def main():
 
 	# parse xml datasource
 	data = parseString(xmlsource)
+	tracks = data.getElementsByTagName('track')
+
+	print "Ready to download the %s %s of the %s user... " % (len(tracks), type, user)
 
 	# download songs for each track for the user
-	for track in data.getElementsByTagName('track'):
+	for track in tracks:
 		title = get_title(track)
 		url   = get_url(track)
 
