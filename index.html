@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Soundcloud-Downloader by oziks</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header">Soundcloud-Downloader</h1>
+        <p class="header">Download songs from SoundCloud, even if the song is not available for download.</p>
+
+        <ul>
+          <li class="download"><a class="buttons" href="https://github.com/oziks/Soundcloud-Downloader/zipball/master">Download ZIP</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/oziks/Soundcloud-Downloader/tarball/master">Download TAR</a></li>
+          <li><a class="buttons github" href="https://github.com/oziks/Soundcloud-Downloader">View On GitHub</a></li>
+        </ul>
+
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/oziks">oziks</a></p>
+
+
+      </header>
+      <section>
+        <h3>How to use</h3>
+
+<p>Just run the python script like:</p>
+
+<div class="highlight"><pre><span class="nv">$ </span>soundcloud-downloader.py USER CLIENT_ID
+</pre></div>
+
+<ul>
+<li>
+<code>USER</code>: the username like <code>bassenectar</code> (<a href="http://soundcloud.com/bassnectar">http://soundcloud.com/bassnectar</a>)</li>
+<li>
+<code>CLIENT_ID</code>: the soundcloud Client ID (this script uses the soundcloud api)</li>
+</ul><h3>Get the client ID</h3>
+
+<p>Register your app on <a href="http://soundcloud.com/you/apps/new">http://soundcloud.com/you/apps/new</a> and takes the <code>Client ID</code>.</p>
+
+<h3>Integrate into the console</h3>
+
+<p>Edit your <code>.bashrc</code> file and paste the following code :</p>
+
+<div class="highlight"><pre><span class="k">function </span>soundcloud<span class="o">()</span> <span class="o">{</span>
+    <span class="nv">user</span><span class="o">=</span><span class="nv">$1</span>
+    <span class="nb">type</span><span class="o">=</span><span class="nv">$2</span>
+    /path/to/soundcloud-downloader.py <span class="k">${</span><span class="nv">user</span><span class="k">}</span> <span class="k">${</span><span class="nv">type</span><span class="k">}</span> CLIENT_ID
+<span class="o">}</span>
+</pre></div>
+
+<p>And to download the all tracks at one time from Bassnectar user:</p>
+
+<div class="highlight"><pre><span class="nv">$ </span>soundcloud bassnectar
+<span class="c"># same action with the `type` argument</span>
+<span class="nv">$ </span>soundcloud bassnectar tracks 
+</pre></div>
+
+<p>And my favorites:</p>
+
+<div class="highlight"><pre><span class="nv">$ </span>soundcloud oziks favorites
+</pre></div>
+
+<hr><p>HAVE FUN :-)</p>
+      </section>
+      <footer>
+        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+		
+  </body>
+</html>
