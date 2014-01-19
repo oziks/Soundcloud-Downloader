@@ -1,6 +1,7 @@
 #!/usr/bin/python2
 import urllib2, sys, re
 import urllib
+import glob
 
 from xml.dom.minidom import parseString
 
@@ -35,9 +36,16 @@ def get_url(track):
 
 	return url
 
+def get_already_downloaded():
+        return glob.glob('*.mp3')
+
+
 def main():
         failedTracks = []
 	print "Getting Information... "
+
+        #get the titles of the tracks we already have downloaded in the directory
+	alreadyDownloadedTracks = get_already_downloaded()
 
 	# retrieve the user of the songs to download
 	user = sys.argv[1]
@@ -73,8 +81,14 @@ def main():
 
 	# download songs for each track for the user
 	for track in tracks:
+
 		title = get_title(track)
 		url   = get_url(track)
+
+                #if the song already exsists in the directory do nothing
+	        if unicode(title) in alreadyDownloadedTracks:
+                    print 'Song Already Downloaded : '+unicode(title)+'\n'
+                    continue
 
 		print "Downloading File '%s'" % title
                 try:
