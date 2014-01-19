@@ -36,6 +36,7 @@ def get_url(track):
 	return url
 
 def main():
+        failedTracks = []
 	print "Getting Information... "
 
 	# retrieve the user of the songs to download
@@ -76,9 +77,17 @@ def main():
 		url   = get_url(track)
 
 		print "Downloading File '%s'" % title
-		urllib.urlretrieve(url, title)
+                try:
+                    urllib.urlretrieve(url, title)
+                except IOError as e:
+                    failedTracks.append(title)
+                    print 'Connection to SoundCloud Failed, unable to download:\n '+title+'\n continuing to next song'
 
 	print "Download Complete"
+        if len(failedTracks)>0:
+            print 'Failed Tracks:\n'
+            for t in failedTracks:
+                print t+'\n'
 
 if __name__ == '__main__':
 	main()
